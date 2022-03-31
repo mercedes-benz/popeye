@@ -276,6 +276,7 @@ func (p *Popeye) Sanitize() (int, int, error) {
 				log.Fatal().Err(err).Msg("S3 Upload")
 			}
 		}
+		p.factory.(*client.Factory).Terminate()
 	}()
 
 	if err := client.Load(p.factory); err != nil {
